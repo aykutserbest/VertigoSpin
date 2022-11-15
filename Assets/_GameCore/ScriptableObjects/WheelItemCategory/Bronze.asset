@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62bdcd158c8fef445bed4a26817d44dc, type: 3}
+  m_Name: Bronze
+  m_EditorClassIdentifier: 
+  wheelItems:
+  - {fileID: 11400000, guid: 2a8d89af825cf7e459d610bebdb72180, type: 2}
+  - {fileID: 11400000, guid: 66b373ba7fb440540bd47e083bbfaf8d, type: 2}
+  - {fileID: 11400000, guid: 057505524aa07aa42be115456154020a, type: 2}
+  - {fileID: 11400000, guid: f284a210f27c4574d96c67c72c8e9e10, type: 2}
+  - {fileID: 11400000, guid: 66465a384d5db7b438a7bb622594992b, type: 2}
+  - {fileID: 11400000, guid: f0f021050e279b74baf9f4ff704ed0bf, type: 2}
+  - {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
+  wheelItemCategoryEnum: 0
