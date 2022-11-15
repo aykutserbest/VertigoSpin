@@ -12,5 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62bdcd158c8fef445bed4a26817d44dc, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
-  wheelItems: []
+  wheelItems:
+  - {fileID: 11400000, guid: ccaeb01f50c18c74e91c6179dc26c456, type: 2}
+  - {fileID: 11400000, guid: af5b7ccc44a932b4dbab7d4837a3efa2, type: 2}
+  - {fileID: 11400000, guid: bf7f3e03d7b86d441ba3c829d9d71158, type: 2}
+  - {fileID: 11400000, guid: 73231811e2af7ed4ab84617d064b017a, type: 2}
+  - {fileID: 11400000, guid: be4d93d49ddf9d143b46fd5c562ce707, type: 2}
+  - {fileID: 11400000, guid: 88bfd558833b52849a9a6754079cdd53, type: 2}
+  - {fileID: 11400000, guid: ace559983bb04fc49b24568a5a07a8fb, type: 2}
+  - {fileID: 11400000, guid: 836b94412805ab04d94b8bb07d01fa96, type: 2}
+  - {fileID: 11400000, guid: c4e6b89e45f7c644cad2c9d86fff443e, type: 2}
+  - {fileID: 11400000, guid: b69a0501073e9f3498683e3f76c981ac, type: 2}
+  - {fileID: 11400000, guid: a6c35d4e38c70234aa4de399a96251f3, type: 2}
+  - {fileID: 11400000, guid: f3734c85b84cb484389fb0f92434f982, type: 2}
   wheelItemCategoryEnum: 2

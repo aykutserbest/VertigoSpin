@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: Bronze
   m_EditorClassIdentifier: 
   wheelItems:
-  - {fileID: 11400000, guid: 2a8d89af825cf7e459d610bebdb72180, type: 2}
-  - {fileID: 11400000, guid: 66b373ba7fb440540bd47e083bbfaf8d, type: 2}
+  - {fileID: 11400000, guid: 3345a034f3bf8b74b9a0bf6761ee259e, type: 2}
   - {fileID: 11400000, guid: 057505524aa07aa42be115456154020a, type: 2}
-  - {fileID: 11400000, guid: f284a210f27c4574d96c67c72c8e9e10, type: 2}
+  - {fileID: 11400000, guid: f8aa557b675fb2d4d837421d352f992a, type: 2}
   - {fileID: 11400000, guid: 66465a384d5db7b438a7bb622594992b, type: 2}
-  - {fileID: 11400000, guid: f0f021050e279b74baf9f4ff704ed0bf, type: 2}
-  - {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
+  - {fileID: 11400000, guid: 1f2be3e1a8f4de44296a0d88ff5fc18b, type: 2}
+  - {fileID: 11400000, guid: 711ddd6f19629e6459d92b270e0e8d8f, type: 2}
+  - {fileID: 11400000, guid: 6caadf9389aee254189e34410922e183, type: 2}
+  - {fileID: 11400000, guid: d35120d1523557344b9a4b06d73ae108, type: 2}
+  - {fileID: 11400000, guid: be4d93d49ddf9d143b46fd5c562ce707, type: 2}
+  - {fileID: 11400000, guid: a6c35d4e38c70234aa4de399a96251f3, type: 2}
+  - {fileID: 11400000, guid: 2a8d89af825cf7e459d610bebdb72180, type: 2}
+  - {fileID: 11400000, guid: f284a210f27c4574d96c67c72c8e9e10, type: 2}
   wheelItemCategoryEnum: 0
