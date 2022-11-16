@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b69a0501073e9f3498683e3f76c981ac, type: 2}
   - {fileID: 11400000, guid: a6c35d4e38c70234aa4de399a96251f3, type: 2}
   - {fileID: 11400000, guid: f3734c85b84cb484389fb0f92434f982, type: 2}
-  wheelItemCategoryEnum: 2
+  wheelType: 2

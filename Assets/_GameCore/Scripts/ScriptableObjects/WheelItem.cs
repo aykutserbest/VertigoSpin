@@ -9,14 +9,12 @@ namespace VertigoSpin
         [SerializeField] private Sprite sprite;
         [SerializeField] private int minAmount;
         [SerializeField] private int maxAmount;
-        [Range(0, 100)] [SerializeField] private int dropRate;
         [SerializeField] private Rarity rarity;
         
         public string ItemName => itemName;
         public Sprite Sprite => sprite;
         public int MinAmount => minAmount;
         public int MaxAmount => maxAmount;
-        public int DropRate => dropRate;
         public Rarity Rarity => rarity;
     }
 
