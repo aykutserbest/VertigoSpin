@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VertigoSpin
@@ -9,24 +7,25 @@ namespace VertigoSpin
         public static GameModManager Instance { get; private set; }
         
         private GameModReferenceManager _gameModReference;
+        private UIReferenceManager _uiReferenceManager;
         private WheelGameUIManager _wheelGameUIManager;
         private WheelController _wheelController;
-        
-        private int _currentLevel=2;
+
+        private int _currentLevel = 1;
         
         private void Awake()
         {
+            CreateInstance();
             GetReferences();
 
             Initialize();
         }
         
-        public void Initialize()
+        private void Initialize()
         {
-            CreateInstance();
-            
             GetReferences();
-
+            
+            _uiReferenceManager.Initialize();
             _wheelGameUIManager.Initialize();
             _wheelController.Initialize();
             
@@ -50,11 +49,12 @@ namespace VertigoSpin
         {
             _gameModReference = GetComponent<GameModReferenceManager>();
             _gameModReference.Initialize();
-
+            
+            _uiReferenceManager = GetComponent<UIReferenceManager>();
+            
             _wheelGameUIManager = _gameModReference.GameUIManager;
             _wheelController = _gameModReference.WheelController;
         }
-
 
         public WheelType GetCurrentWheelType()
         {

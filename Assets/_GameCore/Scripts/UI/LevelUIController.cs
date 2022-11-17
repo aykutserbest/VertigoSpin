@@ -36,7 +36,7 @@ namespace VertigoSpin
 
         private void SelectZoneType(GameObject stateZone)
         {
-            var instanceUIElementReferences = GameModReferenceManager.Instance.UIElementReferences;
+            var instanceUIElementReferences = UIReferenceManager.Instance;
             if (_currentLevel == 1 || _currentLevel % 5 == 0)
             {
                 stateZone.GetComponent<Image>().sprite =

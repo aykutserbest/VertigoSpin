@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -8,25 +9,38 @@ namespace VertigoSpin
 {
     public class WheelUIController : MonoBehaviour
     { 
+        private Transform _wheelBaseTransform;
         private Transform _wheelTransform;
         private WheelController _controller;
         private List<CreatedWheelItem> _createdWheelItem;
         
-        [SerializeField] private Transform wheelAreaContainer;
         [SerializeField] private GameObject spinButton;
+        [SerializeField] private GameObject wheelItemBasePrefab;
 
         private WheelType _wheelType;
-        private UIElementReferences _uiElementReferences;
+        private UIReferenceManager _uiReferenceManager;
 
         public void Initialize()
         {
             GetReference();
             DetectWheelType();
+            
+            EventManager.OnSpinWheel += OnSpinWheel;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnSpinWheel -= OnSpinWheel;
+        }
+
+        private void OnSpinWheel()
+        {
+            StartSpin();
         }
 
         private void GetReference()
         {
-            _uiElementReferences = GameModReferenceManager.Instance.UIElementReferences;
+            _uiReferenceManager = UIReferenceManager.Instance;
             _wheelType = GameModManager.Instance.GetCurrentWheelType();
             _controller = GetComponent<WheelController>();
         }
@@ -36,16 +50,18 @@ namespace VertigoSpin
             switch (_wheelType)
             {
                 case WheelType.Bronze:
-                    InstantiateWheel(_uiElementReferences.BronzeWheel);
                     GetWheelItem(WheelType.Bronze);
+                    InstantiateWheel(_uiReferenceManager.BronzeWheel);
                     break;
+                
                 case WheelType.Silver:
-                    InstantiateWheel(_uiElementReferences.SilverWheel);
                     GetWheelItem(WheelType.Silver);
+                    InstantiateWheel(_uiReferenceManager.SilverWheel);
                     break;
+                
                 case WheelType.Gold:
-                    InstantiateWheel(_uiElementReferences.GoldWheel);
                     GetWheelItem(WheelType.Gold);
+                    InstantiateWheel(_uiReferenceManager.GoldWheel);
                     break;
             }
         }
@@ -57,36 +73,50 @@ namespace VertigoSpin
         
         private void InstantiateWheel(GameObject wheel)
         {
-            var wheelObj = Instantiate(wheel, wheelAreaContainer);
-            _wheelTransform = wheelObj.transform;
+            var wheelObj = Instantiate(wheel, transform);
+            _wheelBaseTransform = wheelObj.transform;
+            _wheelBaseTransform.SetAsFirstSibling();
             spinButton.SetActive(true);
 
             AddItemToWheel();
         }
 
+        private WheelSlotController _wheelSlotController;
+
         private void AddItemToWheel()
         {
-            foreach (var item in _createdWheelItem)
+            _wheelSlotController = _wheelBaseTransform.GetComponentInChildren<WheelSlotController>();
+            _wheelSlotController.Initialize();
+            _wheelTransform = _wheelSlotController.WheelTransform;
+
+            for (var index = 0; index < _wheelSlotController.Slots.Length; index++)
             {
-                
+                var slot = _wheelSlotController.Slots[index];
+                var wheelItemGO = Instantiate(wheelItemBasePrefab, slot);
+                wheelItemGO.GetComponent<WheelItemUIController>().Initialize(_createdWheelItem[index].wheelItem.Sprite,
+                    _createdWheelItem[index].amount);
             }
         }
 
-        void StartSpin()
+        private bool _isSpiningEnable;
+        
+        private void StartSpin()
         {
+            if (_isSpiningEnable) return;
+            
+            _isSpiningEnable = true;
+            
             var duration = 10f;
             var targetRotation = 45f;
             var finalRotation = new Vector3(0, 0, 360 * 5 + targetRotation);
-            var wheelInitialRotation = _wheelTransform.eulerAngles.z;
+            var wheelInitialRotation = _wheelBaseTransform.eulerAngles.z;
             
             _wheelTransform.DORotate(finalRotation, duration, RotateMode.FastBeyond360).SetEase(Ease.InOutQuart)
-                .OnUpdate(() => {
-                    
-                })
-                .OnComplete(() => {
-                 //bitti eventi patlat
+                .OnComplete(() =>
+                {
+                    Debug.Log("Spin Ended");
+                    _isSpiningEnable = false;
                 });
         }
-        
     }
 }

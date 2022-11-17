@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VertigoSpin
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/UIElementRefences", fileName = "UIElementRefences")]
-    public class UIElementReferences : ScriptableObject
+    public class UIReferenceManager : MonoBehaviour
     {
+        public static UIReferenceManager Instance { get; private set; }
+
         [SerializeField] private Sprite safeZoneBG;
         [SerializeField] private Sprite superZoneBG;
         
@@ -23,5 +22,18 @@ namespace VertigoSpin
         public GameObject SilverWheel => silverWheel;
 
         public GameObject GoldWheel => goldWheel;
+        
+        public void Initialize()
+        {
+            CreateInstance();
+        }
+
+        private void CreateInstance()
+        {
+            if (Instance == null)
+                Instance = this;
+            else if (Instance != this)
+                Destroy(this);
+        }
     }
 }
