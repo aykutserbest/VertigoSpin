@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,6 +10,14 @@ namespace VertigoSpin
     public class WheelController : MonoBehaviour
     {
         [SerializeField] private List<CreatedWheelItem> selectedItems;
+
+        private int _rewardIndex;
+        private CreatedWheelItem _reward;
+
+        public int RewardIndex => _rewardIndex;
+
+        public CreatedWheelItem Reward => _reward;
+
         public void Initialize()
         {
            
@@ -25,6 +32,7 @@ namespace VertigoSpin
                 if (container.WheelType == wheelType)
                 {
                     SelectItems(container, wheelType);
+                    SelectReward();
                 }
             }
 
@@ -66,14 +74,32 @@ namespace VertigoSpin
             }
         }
         
-        public void Shuffle<T>(IList<T> ts) {
+        private void SelectReward()
+        {
+            ArrayList dropList = new ArrayList();
+            float drawn = Random.Range(0f, 100f);
+
+            foreach (var item in selectedItems)
+            {
+                if (drawn <= item.dropRate)
+                {
+                    dropList.Add(item);
+                }
+            }
+
+            var index = Random.Range(0, dropList.Count);
+            _reward = selectedItems[index];
+            _rewardIndex = selectedItems.IndexOf(_reward);
+            
+            Debug.Log($"reward:{_reward.wheelItem.name} {_rewardIndex}");
+        }
+        
+        private void Shuffle<T>(IList<T> ts) {
             var count = ts.Count;
             var last = count - 1;
             for (var i = 0; i < last; ++i) {
-                var r = UnityEngine.Random.Range(i, count);
-                var tmp = ts[i];
-                ts[i] = ts[r];
-                ts[r] = tmp;
+                var r = Random.Range(i, count);
+                (ts[i], ts[r]) = (ts[r], ts[i]);
             }
         }
     }

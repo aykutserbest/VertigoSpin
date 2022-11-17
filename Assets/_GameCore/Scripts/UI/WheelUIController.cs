@@ -107,7 +107,7 @@ namespace VertigoSpin
             _isSpiningEnable = true;
             
             var duration = 10f;
-            var targetRotation = 45f;
+            var targetRotation = _controller.RewardIndex * 45f;
             var finalRotation = new Vector3(0, 0, 360 * 5 + targetRotation);
             var wheelInitialRotation = _wheelBaseTransform.eulerAngles.z;
             
