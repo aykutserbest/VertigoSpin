@@ -16,11 +16,14 @@ namespace VertigoSpin
         {
             _button.onClick.AddListener(OnButtonClick);
         }
-        
-        private void OnButtonClick()
+
+        private void OnDisable()
         {
             _button.onClick.RemoveAllListeners();
-            
+        }
+
+        private void OnButtonClick()
+        {
             EventManager.SpinWheel();
         }
     }

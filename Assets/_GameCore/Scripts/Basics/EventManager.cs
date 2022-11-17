@@ -11,5 +11,12 @@ namespace VertigoSpin
         {
             OnSpinWheel?.Invoke();
         }
+        
+        public static event Action OnSpinWheelCompleted;
+
+        public static void SpinWheelCompleted()
+        {
+            OnSpinWheelCompleted?.Invoke();
+        }
     }
 }

@@ -109,14 +109,26 @@ namespace VertigoSpin
             var duration = 10f;
             var targetRotation = _controller.RewardIndex * 45f;
             var finalRotation = new Vector3(0, 0, 360 * 5 + targetRotation);
-            var wheelInitialRotation = _wheelBaseTransform.eulerAngles.z;
             
             _wheelTransform.DORotate(finalRotation, duration, RotateMode.FastBeyond360).SetEase(Ease.InOutQuart)
                 .OnComplete(() =>
                 {
-                    Debug.Log("Spin Ended");
-                    _isSpiningEnable = false;
+                    Complete();
                 });
+        }
+
+        private void Complete()
+        {
+            EventManager.SpinWheelCompleted();
+            Restart();
+            _isSpiningEnable = false;
+        }
+
+        private void Restart()
+        {
+            Destroy(_wheelBaseTransform.gameObject);
+            _wheelType = GameModManager.Instance.GetCurrentWheelType();
+            DetectWheelType();
         }
     }
 }

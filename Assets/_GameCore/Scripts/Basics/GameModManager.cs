@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace VertigoSpin
@@ -19,8 +20,22 @@ namespace VertigoSpin
             GetReferences();
 
             Initialize();
+            
+            EventManager.OnSpinWheelCompleted += OnSpinWheelCompleted;
         }
-        
+
+        private void OnDisable()
+        {
+            EventManager.OnSpinWheelCompleted -= OnSpinWheelCompleted;
+        }
+
+        private void OnSpinWheelCompleted()
+        {
+            _currentLevel++;
+            
+            _gameModReference.UILevelController.SlideLevelState();
+        }
+
         private void Initialize()
         {
             GetReferences();

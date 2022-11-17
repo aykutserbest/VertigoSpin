@@ -49,15 +49,12 @@ namespace VertigoSpin
             }
         }
 
-        private void SlideLevelState()
+        private int _levelContainerCurrentPos = -119;
+
+        public void SlideLevelState()
         {
-            var levelContainerCurrentPos = -119;
-            uiLevelContainer.transform.DOLocalMoveX(levelContainerCurrentPos,0.5f);
-            levelContainerCurrentPos -= 119;
+            uiLevelContainer.transform.DOLocalMoveX(_levelContainerCurrentPos,0.5f);
+            _levelContainerCurrentPos -= 119;
         }
-
-
-    
-
     }
 }
