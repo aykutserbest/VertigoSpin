@@ -13,16 +13,26 @@ MonoBehaviour:
   m_Name: Silver
   m_EditorClassIdentifier: 
   wheelItems:
-  - {fileID: 11400000, guid: 46dcb5708bc0961458dfd78261900f67, type: 2}
-  - {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
-  - {fileID: 11400000, guid: c39c7ff3874dc73459d3b2046cdaf69b, type: 2}
-  - {fileID: 11400000, guid: b69a0501073e9f3498683e3f76c981ac, type: 2}
-  - {fileID: 11400000, guid: f0f021050e279b74baf9f4ff704ed0bf, type: 2}
-  - {fileID: 11400000, guid: 711ddd6f19629e6459d92b270e0e8d8f, type: 2}
-  - {fileID: 11400000, guid: 6caadf9389aee254189e34410922e183, type: 2}
-  - {fileID: 11400000, guid: d35120d1523557344b9a4b06d73ae108, type: 2}
-  - {fileID: 11400000, guid: b301196281b6d9145950fec12e8a0d06, type: 2}
-  - {fileID: 11400000, guid: 8764d99978e9d904b98622da5bdf9c85, type: 2}
-  - {fileID: 11400000, guid: 0f57b7516193ec043b002e15e3f42af8, type: 2}
-  - {fileID: 11400000, guid: 1f2be3e1a8f4de44296a0d88ff5fc18b, type: 2}
+  - wheelItem: {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
+    dropRate: 50
+  - wheelItem: {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
+    dropRate: 85
+  - wheelItem: {fileID: 11400000, guid: 3345a034f3bf8b74b9a0bf6761ee259e, type: 2}
+    dropRate: 40
+  - wheelItem: {fileID: 11400000, guid: 46dcb5708bc0961458dfd78261900f67, type: 2}
+    dropRate: 30
+  - wheelItem: {fileID: 11400000, guid: e2beaecf35b1fd049b47a40e8d6b8ccb, type: 2}
+    dropRate: 70
+  - wheelItem: {fileID: 11400000, guid: 0f57b7516193ec043b002e15e3f42af8, type: 2}
+    dropRate: 53
+  - wheelItem: {fileID: 11400000, guid: be4d93d49ddf9d143b46fd5c562ce707, type: 2}
+    dropRate: 22
+  - wheelItem: {fileID: 11400000, guid: 645c0b231336b2041b79e0865e894e45, type: 2}
+    dropRate: 57
+  - wheelItem: {fileID: 11400000, guid: 836b94412805ab04d94b8bb07d01fa96, type: 2}
+    dropRate: 50
+  - wheelItem: {fileID: 11400000, guid: a6c35d4e38c70234aa4de399a96251f3, type: 2}
+    dropRate: 59
+  - wheelItem: {fileID: 11400000, guid: 73231811e2af7ed4ab84617d064b017a, type: 2}
+    dropRate: 56
   wheelType: 1

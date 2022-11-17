@@ -13,28 +13,32 @@ MonoBehaviour:
   m_Name: Bronze
   m_EditorClassIdentifier: 
   wheelItems:
-  - wheelItem: {fileID: 11400000, guid: 0d05e27d99bd7aa4893f89c77f1769db, type: 2}
-    dropRate: 13
   - wheelItem: {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
-  - wheelItem: {fileID: 0}
-    dropRate: 0
+    dropRate: 50
+  - wheelItem: {fileID: 11400000, guid: 5f2adb73324450b42abdd6e1c60fd4c0, type: 2}
+    dropRate: 85
+  - wheelItem: {fileID: 11400000, guid: 3345a034f3bf8b74b9a0bf6761ee259e, type: 2}
+    dropRate: 40
+  - wheelItem: {fileID: 11400000, guid: 46dcb5708bc0961458dfd78261900f67, type: 2}
+    dropRate: 30
+  - wheelItem: {fileID: 11400000, guid: e2beaecf35b1fd049b47a40e8d6b8ccb, type: 2}
+    dropRate: 70
+  - wheelItem: {fileID: 11400000, guid: 0f57b7516193ec043b002e15e3f42af8, type: 2}
+    dropRate: 53
+  - wheelItem: {fileID: 11400000, guid: be4d93d49ddf9d143b46fd5c562ce707, type: 2}
+    dropRate: 22
+  - wheelItem: {fileID: 11400000, guid: 645c0b231336b2041b79e0865e894e45, type: 2}
+    dropRate: 57
+  - wheelItem: {fileID: 11400000, guid: 836b94412805ab04d94b8bb07d01fa96, type: 2}
+    dropRate: 50
+  - wheelItem: {fileID: 11400000, guid: a6c35d4e38c70234aa4de399a96251f3, type: 2}
+    dropRate: 59
+  - wheelItem: {fileID: 11400000, guid: 73231811e2af7ed4ab84617d064b017a, type: 2}
+    dropRate: 56
+  - wheelItem: {fileID: 11400000, guid: b69a0501073e9f3498683e3f76c981ac, type: 2}
+    dropRate: 56
+  - wheelItem: {fileID: 11400000, guid: b69a0501073e9f3498683e3f76c981ac, type: 2}
+    dropRate: 56
+  - wheelItem: {fileID: 11400000, guid: c7ce1da66ef1e1740b20e83f7ab2ab67, type: 2}
+    dropRate: 32
   wheelType: 0
