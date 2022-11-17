@@ -10,6 +10,8 @@ namespace VertigoSpin
     { 
         private Transform _wheelTransform;
         private WheelController _controller;
+        private List<CreatedWheelItem> _createdWheelItem;
+        
         [SerializeField] private Transform wheelAreaContainer;
         [SerializeField] private GameObject spinButton;
 
@@ -49,15 +51,25 @@ namespace VertigoSpin
         }
 
         private void GetWheelItem(WheelType wheelType)
-        {
-            var itemList = _controller.FillWheelItem(wheelType);
+        { 
+            _createdWheelItem = _controller.FillWheelItem(wheelType);
         }
-
+        
         private void InstantiateWheel(GameObject wheel)
         {
             var wheelObj = Instantiate(wheel, wheelAreaContainer);
             _wheelTransform = wheelObj.transform;
             spinButton.SetActive(true);
+
+            AddItemToWheel();
+        }
+
+        private void AddItemToWheel()
+        {
+            foreach (var item in _createdWheelItem)
+            {
+                
+            }
         }
 
         void StartSpin()
