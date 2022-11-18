@@ -25,7 +25,8 @@ namespace VertigoSpin
         {
             GetReference();
             DetectWheelType();
-            
+
+            spinButton.GetComponent<CanvasGroup>().alpha = 1;
             EventManager.OnSpinWheel += OnSpinWheel;
         }
 
@@ -91,7 +92,7 @@ namespace VertigoSpin
         {
             _wheelBaseTransform = obj.Result.transform;
             _wheelBaseTransform.SetAsFirstSibling();
-            spinButton.SetActive(true);
+            
 
             AddItemToWheel();
         }
