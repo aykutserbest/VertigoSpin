@@ -32,5 +32,12 @@ namespace VertigoSpin
         {
             OnRestart?.Invoke();
         }
+        
+        public static event Action<CreatedWheelItem, Vector3> OnStartRewardItemMoveAnim;
+        public static void StartRewardItemMoveAnim(CreatedWheelItem reward, Vector3 startPos)
+        {
+            OnStartRewardItemMoveAnim?.Invoke(reward,startPos);
+        }
+        
     }
 }

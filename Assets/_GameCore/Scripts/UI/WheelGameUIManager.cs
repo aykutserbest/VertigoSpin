@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace VertigoSpin
 {
@@ -17,6 +19,18 @@ namespace VertigoSpin
             _levelUIController.Initialize();
             _wheelUIController.Initialize();
             _gameOverPanelController.Initialize();
+
+            EventManager.OnStartRewardItemMoveAnim += StartItemMove;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnStartRewardItemMoveAnim -= StartItemMove;
+        }
+
+        private void StartItemMove(CreatedWheelItem reward, Vector3 startPos)
+        {
+            GameModReferenceManager.Instance.UIPoolController.AddSlot(UIReferenceManager.Instance.RewardPoolSlotBase,reward);
         }
 
         public void Run()
@@ -26,6 +40,7 @@ namespace VertigoSpin
         
         public void Restart()
         {
+            GameModReferenceManager.Instance.UIPoolController.ClearContainerList();
             _gameOverPanelController.Initialize();
             _wheelUIController.NextLevel();
         }

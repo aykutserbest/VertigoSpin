@@ -12,6 +12,7 @@ namespace VertigoSpin
         private Transform _wheelTransform;
         private WheelController _controller;
         private List<CreatedWheelItem> _createdWheelItem;
+        private GameObject _instantiateFirstWheelItemGameObject;
         
         [SerializeField] private GameObject spinButton;
         [SerializeField] private GameObject wheelItemBasePrefab;
@@ -119,9 +120,12 @@ namespace VertigoSpin
             for (var index = 0; index < _wheelSlotController.Slots.Length; index++)
             {
                 var slot = _wheelSlotController.Slots[index];
-                var wheelItemGO = Instantiate(wheelItemBasePrefab, slot);
-                wheelItemGO.GetComponent<WheelItemUIController>().Initialize(_createdWheelItem[index].wheelItem.Sprite,
+                var WheelItemGameObject = Instantiate(wheelItemBasePrefab, slot);
+                WheelItemGameObject.GetComponent<WheelItemUIController>().Initialize(_createdWheelItem[index].wheelItem.Sprite,
                     _createdWheelItem[index].amount);
+
+                if (index==0)  _instantiateFirstWheelItemGameObject = WheelItemGameObject;
+              
             }
         }
 
@@ -148,7 +152,6 @@ namespace VertigoSpin
                     {
                         Complete();
                     }
-                    
                 });
         }
 
@@ -161,6 +164,9 @@ namespace VertigoSpin
 
         private void Complete()
         {
+            var itemAnimStartPos = _instantiateFirstWheelItemGameObject.transform.position;
+            EventManager.StartRewardItemMoveAnim(_controller.Reward, itemAnimStartPos);
+            
             EventManager.SpinWheelCompleted();
             NextLevel();
             _isSpiningEnable = false;
