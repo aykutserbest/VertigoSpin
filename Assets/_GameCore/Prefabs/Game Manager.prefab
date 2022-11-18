@@ -81,9 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   safeZoneBG: {fileID: 0}
   superZoneBG: {fileID: 0}
-  bronzeWheel: {fileID: 0}
-  silverWheel: {fileID: 0}
-  goldWheel: {fileID: 0}
+  bronzeWheel: ui_image_wheel_bronze
+  silverWheel: ui_image_wheel_silver
+  goldWheel: ui_image_wheel_gold
 --- !u!114 &4676835135857017106
 MonoBehaviour:
   m_ObjectHideFlags: 0

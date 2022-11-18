@@ -9,19 +9,19 @@ namespace VertigoSpin
         [SerializeField] private Sprite safeZoneBG;
         [SerializeField] private Sprite superZoneBG;
         
-        [SerializeField] private GameObject bronzeWheel;
-        [SerializeField] private GameObject silverWheel;
-        [SerializeField] private GameObject goldWheel;
+        [SerializeField] private string bronzeWheel;
+        [SerializeField] private string silverWheel;
+        [SerializeField] private string goldWheel;
 
         public Sprite SafeZoneBg => safeZoneBG;
 
         public Sprite SuperZoneBg => superZoneBG;
 
-        public GameObject BronzeWheel => bronzeWheel;
+        public string BronzeWheel => bronzeWheel;
 
-        public GameObject SilverWheel => silverWheel;
+        public string SilverWheel => silverWheel;
 
-        public GameObject GoldWheel => goldWheel;
+        public string GoldWheel => goldWheel;
         
         public void Initialize()
         {

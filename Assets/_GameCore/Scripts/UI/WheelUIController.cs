@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace VertigoSpin
 {
@@ -71,14 +70,41 @@ namespace VertigoSpin
             _createdWheelItem = _controller.FillWheelItem(wheelType);
         }
         
-        private void InstantiateWheel(GameObject wheel)
+        private void InstantiateWheel(string wheelAddressableName)
         {
-            var wheelObj = Instantiate(wheel, transform);
-            _wheelBaseTransform = wheelObj.transform;
+            Instantiate(wheelAddressableName, transform).Completed += OnCompleted;
+        }
+        
+        private List<AsyncOperationHandle> _loadedAddressableGameObjects = new();
+
+        private AsyncOperationHandle<GameObject> Instantiate(string key, Transform parent)
+        {
+            var handle = Addressables.InstantiateAsync(key, parent);
+            _loadedAddressableGameObjects.Add(handle);
+
+            return handle;
+        }
+        
+        private void OnCompleted(AsyncOperationHandle<GameObject> obj)
+        {
+            _wheelBaseTransform = obj.Result.transform;
             _wheelBaseTransform.SetAsFirstSibling();
             spinButton.SetActive(true);
 
             AddItemToWheel();
+        }
+        
+        public void ClearLoadedGameObjects()
+        {
+            foreach (var handle in _loadedAddressableGameObjects)
+            {
+                if (handle.Result != null)
+                {
+                    Addressables.ReleaseInstance(handle);
+                }
+            }
+
+            _loadedAddressableGameObjects.Clear();
         }
 
         private WheelSlotController _wheelSlotController;
@@ -126,7 +152,8 @@ namespace VertigoSpin
 
         private void Restart()
         {
-            Destroy(_wheelBaseTransform.gameObject);
+            //Destroy(_wheelBaseTransform.gameObject);
+            ClearLoadedGameObjects();
             _wheelType = GameModManager.Instance.GetCurrentWheelType();
             DetectWheelType();
         }
