@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_GameCore/Scenes/SpinGame.unity
+    guid: 585e1485f9a73b240987556a6b3c060a
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1c064bdd56cab46a49b4f8cfa5eca821, type: 2}
