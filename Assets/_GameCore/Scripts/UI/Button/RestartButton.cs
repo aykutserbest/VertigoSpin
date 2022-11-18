@@ -5,7 +5,7 @@ namespace VertigoSpin
 {
     public class RestartButton : MonoBehaviour
     {
-        private Button _button;
+        public Button _button;
 
         private void OnValidate()
         {
