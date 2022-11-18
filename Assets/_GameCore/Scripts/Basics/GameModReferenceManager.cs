@@ -11,6 +11,7 @@ namespace VertigoSpin
         
         [SerializeField] private LevelUIController uiLevelController;
         [SerializeField] private WheelUIController uiWheelController;
+        [SerializeField] private GameOverPanelController uiGameOverPanelController;
         [SerializeField] private WheelController wheelController;
         
         [SerializeField] private List<WheelItemContainer> wheelContainers;
@@ -22,7 +23,9 @@ namespace VertigoSpin
         public WheelController WheelController => wheelController;
 
         public List<WheelItemContainer> WheelContainers => wheelContainers;
-        
+
+        public GameOverPanelController UIGameOverPanelController => uiGameOverPanelController;
+
         public void Initialize()
         {
             CreateInstance();

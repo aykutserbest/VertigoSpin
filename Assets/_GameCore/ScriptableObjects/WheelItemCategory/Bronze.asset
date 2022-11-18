@@ -40,5 +40,5 @@ MonoBehaviour:
   - wheelItem: {fileID: 11400000, guid: b69a0501073e9f3498683e3f76c981ac, type: 2}
     dropRate: 56
   - wheelItem: {fileID: 11400000, guid: c7ce1da66ef1e1740b20e83f7ab2ab67, type: 2}
-    dropRate: 32
+    dropRate: 26
   wheelType: 0

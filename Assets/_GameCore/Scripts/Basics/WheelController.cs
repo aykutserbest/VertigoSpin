@@ -10,6 +10,7 @@ namespace VertigoSpin
     public class WheelController : MonoBehaviour
     {
         [SerializeField] private List<CreatedWheelItem> selectedItems;
+        [SerializeField] private List<CreatedWheelItem> rewardedItems;
 
         private int _rewardIndex;
         private CreatedWheelItem _reward;
@@ -18,6 +19,8 @@ namespace VertigoSpin
 
         public CreatedWheelItem Reward => _reward;
 
+        public List<CreatedWheelItem> RewardedItems => rewardedItems;
+
         public void Initialize()
         {
            
@@ -25,6 +28,7 @@ namespace VertigoSpin
 
         public List<CreatedWheelItem> FillWheelItem(WheelType wheelType)
         {
+            ClearItemLists(selectedItems);
             var containerList = GameModReferenceManager.Instance.WheelContainers;
 
             foreach (var container in containerList)
@@ -38,6 +42,12 @@ namespace VertigoSpin
 
             return selectedItems;
         }
+
+        private void ClearItemLists(List<CreatedWheelItem> createdWheelItemList)
+        {
+            createdWheelItemList.Clear();  
+        }
+        
 
         private void SelectItems(WheelItemContainer container, WheelType selectedWheelType)
         {
@@ -89,6 +99,7 @@ namespace VertigoSpin
 
             var index = Random.Range(0, dropList.Count);
             _reward = selectedItems[index];
+            rewardedItems.Add(_reward);
             _rewardIndex = selectedItems.IndexOf(_reward);
             
             Debug.Log($"reward:{_reward.wheelItem.name} {_rewardIndex}");
@@ -101,6 +112,11 @@ namespace VertigoSpin
                 var r = Random.Range(i, count);
                 (ts[i], ts[r]) = (ts[r], ts[i]);
             }
+        }
+
+        public void RewardedItemsLists()
+        {
+            ClearItemLists(rewardedItems);
         }
     }
     

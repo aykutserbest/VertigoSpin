@@ -15,6 +15,7 @@ namespace VertigoSpin
         
         [SerializeField] private GameObject spinButton;
         [SerializeField] private GameObject wheelItemBasePrefab;
+        [SerializeField] private float duration = 2f;
 
         private WheelType _wheelType;
         private UIReferenceManager _uiReferenceManager;
@@ -130,27 +131,42 @@ namespace VertigoSpin
         {
             if (_isSpiningEnable) return;
             
-            _isSpiningEnable = true;
+            _isSpiningEnable = true; 
             
-            var duration = 10f;
+            
             var targetRotation = _controller.RewardIndex * 45f;
             var finalRotation = new Vector3(0, 0, 360 * 5 + targetRotation);
             
             _wheelTransform.DORotate(finalRotation, duration, RotateMode.FastBeyond360).SetEase(Ease.InOutQuart)
                 .OnComplete(() =>
                 {
-                    Complete();
+                    if (_controller.Reward.wheelItem.name == "Bomb")
+                    {
+                        GameOver();
+                    }
+                    else
+                    {
+                        Complete();
+                    }
+                    
                 });
+        }
+
+        private void GameOver()
+        {
+            EventManager.GameOver();
+            _isSpiningEnable = false;
+            _controller.RewardedItemsLists();
         }
 
         private void Complete()
         {
             EventManager.SpinWheelCompleted();
-            Restart();
+            NextLevel();
             _isSpiningEnable = false;
         }
 
-        private void Restart()
+        public void NextLevel()
         {
             //Destroy(_wheelBaseTransform.gameObject);
             ClearLoadedGameObjects();

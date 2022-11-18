@@ -22,7 +22,7 @@ namespace VertigoSpin
 
         private void AddLevel()
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var state = Instantiate(uiLevelStatePrefab, uiLevelContainer.transform);
                 var stateLevelText = state.GetComponentInChildren(typeof(TextMeshProUGUI), false) as TextMeshProUGUI;
@@ -49,12 +49,23 @@ namespace VertigoSpin
             }
         }
 
-        private int _levelContainerCurrentPos = -119;
+        private int _levelContainerCurrentPos = -120;
 
         public void SlideLevelState()
         {
+            if (GameModManager.Instance.CurrentLevel % 10 == 0) 
+                    AddLevel();
+           
+
+            
             uiLevelContainer.transform.DOLocalMoveX(_levelContainerCurrentPos,0.5f);
-            _levelContainerCurrentPos -= 119;
+            _levelContainerCurrentPos -= 120;
+        }
+
+        public void ResetLevelState()
+        {
+            uiLevelContainer.transform.DOLocalMoveX(0,0.5f);
+            _levelContainerCurrentPos -= 120;
         }
     }
 }

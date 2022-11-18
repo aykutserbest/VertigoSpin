@@ -18,5 +18,19 @@ namespace VertigoSpin
         {
             OnSpinWheelCompleted?.Invoke();
         }
+        
+        public static event Action OnGameOver;
+
+        public static void GameOver()
+        {
+            OnGameOver?.Invoke();
+        }
+        
+        public static event Action OnRestart;
+
+        public static void Restart()
+        {
+            OnRestart?.Invoke();
+        }
     }
 }

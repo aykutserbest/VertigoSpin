@@ -6,13 +6,15 @@ namespace VertigoSpin
     public class GameModManager : MonoBehaviour
     {
         public static GameModManager Instance { get; private set; }
-        
+
         private GameModReferenceManager _gameModReference;
         private UIReferenceManager _uiReferenceManager;
         private WheelGameUIManager _wheelGameUIManager;
         private WheelController _wheelController;
 
         private int _currentLevel = 1;
+        
+        public int CurrentLevel => _currentLevel;
         
         private void Awake()
         {
@@ -22,18 +24,29 @@ namespace VertigoSpin
             Initialize();
             
             EventManager.OnSpinWheelCompleted += OnSpinWheelCompleted;
+            EventManager.OnRestart += OnRestart;
         }
+
+       
 
         private void OnDisable()
         {
             EventManager.OnSpinWheelCompleted -= OnSpinWheelCompleted;
+            EventManager.OnRestart -= OnRestart;
         }
 
         private void OnSpinWheelCompleted()
         {
-            _currentLevel++;
+            _currentLevel = CurrentLevel + 1;
             
             _gameModReference.UILevelController.SlideLevelState();
+        }
+        
+        private void OnRestart()
+        {
+            _currentLevel = 1;
+            _gameModReference.UILevelController.ResetLevelState();
+            _wheelGameUIManager.Restart();
         }
 
         private void Initialize()
@@ -74,11 +87,11 @@ namespace VertigoSpin
         public WheelType GetCurrentWheelType()
         {
             var returnType = WheelType.Bronze;
-            if (_currentLevel == 1 || _currentLevel % 5 == 0)
+            if (CurrentLevel == 1 || CurrentLevel % 5 == 0)
             {
                 returnType = WheelType.Silver;
             }
-            if (_currentLevel % 30 == 0)
+            if (CurrentLevel % 30 == 0)
             {
                 returnType = WheelType.Gold;
             }
