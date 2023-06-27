@@ -55,8 +55,6 @@ namespace VertigoSpin
         {
             if (GameModManager.Instance.CurrentLevel % 10 == 0) 
                     AddLevel();
-           
-
             
             uiLevelContainer.transform.DOLocalMoveX(_levelContainerCurrentPos,0.5f);
             _levelContainerCurrentPos -= 120;
